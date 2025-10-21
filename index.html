@@ -9,7 +9,9 @@
             --color-primary: #004c99;
             --color-secondary: #0066cc;
             --color-green: #28a745;
+            --color-green-dark: #1e7e34;
             --color-red: #dc3545;
+            --color-orange: #ffc107;
             --color-background: #f0f3f6;
             --color-surface: #ffffff;
             --color-text-dark: #333333;
@@ -113,7 +115,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #008000;
+            background-color: var(--color-green);
             color: var(--color-text-light);
             padding: 8px 15px;
             margin-bottom: 5px; 
@@ -130,6 +132,32 @@
             font-weight: 700;
         }
 
+        .top-bar-center {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .top-bar-button {
+            background: var(--color-surface);
+            color: var(--color-primary);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar-button:hover {
+            background: #e9eef2;
+            transform: translateY(-1px);
+        }
+
         .status-indicator {
             margin-left: 15px;
             padding: 2px 6px;
@@ -139,17 +167,17 @@
         }
 
         .status-loading { 
-            background-color: #ffc107; 
+            background-color: var(--color-orange); 
             color: var(--color-text-dark); 
         }
 
         .status-online { 
-            background-color: #28a745; 
+            background-color: var(--color-green); 
             color: var(--color-text-light); 
         }
 
         .status-error { 
-            background-color: #dc3545; 
+            background-color: var(--color-red); 
             color: var(--color-text-light); 
         }
 
@@ -203,6 +231,19 @@
             height: 100%;
         }
 
+        /* Container hijau untuk judul */
+        .title-container {
+            background-color: var(--color-green);
+            color: var(--color-text-light);
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Card style baru sesuai gambar */
         .summary-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -217,16 +258,13 @@
             align-items: center;
             height: 70px;
             justify-content: center;
-            background: linear-gradient(135deg, var(--color-primary), #0056b3);
+            background: var(--color-green);
             color: var(--color-text-light);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             display: flex;
             flex-direction: column;
-        }
-
-        .summary-cards .card.red-card {
-            background: linear-gradient(135deg, var(--color-red), #c82333);
+            border: 1px solid #e0e0e0;
         }
 
         .summary-cards .card h3 {
@@ -234,9 +272,9 @@
             font-weight: 500;
             margin: 0 0 3px 0;
             line-height: 1.1;
-            opacity: 0.9;
             text-align: center;
             white-space: normal;
+            color: var(--color-text-light);
         }
 
         .summary-cards .card .value {
@@ -248,6 +286,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            color: var(--color-text-light);
+        }
+
+        .summary-cards .card.red-card {
+            background: var(--color-red);
         }
 
         .chart-container {
@@ -284,11 +327,11 @@
         }
 
         .asn-color {
-            background-color: #004c99;
+            background-color: var(--color-primary);
         }
 
         .sertakan-color {
-            background-color: #28a745;
+            background-color: var(--color-green);
         }
 
         .table-area h2 {
@@ -332,13 +375,13 @@
             font-size: 0.75rem;
             text-align: center;
             line-height: 1.1;
-            background: linear-gradient(135deg, var(--color-primary), #0056b3);
+            background: linear-gradient(135deg, var(--color-green), var(--color-green-dark));
             color: var(--color-text-light);
             font-weight: 600;
             white-space: normal;
             text-transform: uppercase;
             letter-spacing: 0.3px;
-            border: 1px solid #003a73;
+            border: 1px solid #1e7e34;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
@@ -406,34 +449,34 @@
 
         /* Style untuk persentase */
         .high-percentage {
-            color: #28a745;
+            color: var(--color-green);
             font-weight: bold;
         }
 
         .medium-percentage {
-            color: #ffc107;
+            color: var(--color-orange);
             font-weight: bold;
         }
 
         .low-percentage {
-            color: #dc3545;
+            color: var(--color-red);
             font-weight: bold;
         }
 
         .positive-gap {
-            color: #28a745;
+            color: var(--color-green);
             font-weight: bold;
         }
 
         .negative-gap {
-            color: #dc3545;
+            color: var(--color-red);
             font-weight: bold;
         }
 
         /* Loading spinner */
         .loading-spinner {
             border: 3px solid #f3f3f3;
-            border-top: 3px solid #004c99;
+            border-top: 3px solid var(--color-primary);
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -508,7 +551,7 @@
         }
 
         @media (max-width: 520px) {
-            .summary-cards {
+            .summary-calls {
                 grid-template-columns: 1fr;
             }
             
@@ -536,7 +579,7 @@
     <div class="container">
         <header>
             <div class="header-section">
-                <img src="medan2.png" alt="Logo Kota Medan" class="header-logo">
+                <img src="medan.png" alt="Logo Kota Medan" class="header-logo">
                 <img src="pemprovsu.png" alt="Logo Pemprovsu" class="header-logo">
             </div>
             <div class="header-title">
@@ -555,31 +598,39 @@
                 <span id="updateDataTimestamp">Update data per tgl. 21 Oct 2025 11:05:30</span> 
                 <span class="status-indicator status-loading" id="connectionStatus">Memuat...</span>
             </div>
+
+            <div class="top-bar-center">
+                <button class="top-bar-button">Home</button>
+                <button class="top-bar-button">Top & Worst</button>
+            </div>
+            <div></div> <!-- Placeholder untuk menjaga keseimbangan layout -->
         </div>
 
         <div class="dashboard">
             <div class="panel summary-area">
-                <h2>Rekap Sertakan ASN Kota Medan</h2>
+                <div class="title-container">
+                    <h2>Rekap Sertakan ASN Kota Medan</h2>
+                </div>
                 <div class="summary-cards">
                     <div class="card">
                         <h3>Jumlah OPD</h3>
-                        <div class="value" id="jumlahOPD">0</div>
+                        <div class="value" id="jumlahOPD">32</div>
                     </div>
                     <div class="card">
                         <h3>Jumlah ASN<br>(1 peserta / ASN)</h3>
-                        <div class="value" id="jumlahASN">0</div>
+                        <div class="value" id="jumlahASN">11.734</div>
                     </div>
                     <div class="card">
                         <h3>Jumlah Akuisisi Sertakan ASN</h3>
-                        <div class="value" id="jumlahAkuisisi">0</div>
+                        <div class="value" id="jumlahAkuisisi">445</div>
                     </div>
                     <div class="card">
                         <h3>Sisa Target</h3>
-                        <div class="value" id="sisaTarget">0</div>
+                        <div class="value" id="sisaTarget">-11.289</div>
                     </div>
                     <div class="card red-card">
                         <h3>% Akuisisi Sertakan ASN</h3>
-                        <div class="value" id="persentaseAkuisisi">0%</div>
+                        <div class="value" id="persentaseAkuisisi">3,79%</div>
                     </div>
                 </div>
                 
@@ -602,7 +653,6 @@
             </div>
 
             <div class="panel table-area">
-                <h2>Nama Dinas</h2>
                 <div class="data-table-container"> 
                     <table class="data-table" id="mainDataTable">
                         <thead>
@@ -617,10 +667,84 @@
                         </thead>
                         <tbody id="mainTableBody">
                             <tr>
-                                <td colspan="6" style="text-align:center;padding:20px;color:#666;">
-                                <div class="loading-spinner"></div>
-                                <p style="margin-top:10px;">Memuat data...</p>
-                                </td>
+                                <td class="center-text">1</td>
+                                <td>DINAS KETENAGAKERJAAN</td>
+                                <td class="center-text">63</td>
+                                <td class="center-text">100</td>
+                                <td class="center-text positive-gap">26</td>
+                                <td class="center-text high-percentage">141,77%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">2</td>
+                                <td>BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA</td>
+                                <td class="center-text">72</td>
+                                <td class="center-text">53</td>
+                                <td class="center-text negative-gap">-19</td>
+                                <td class="center-text medium-percentage">73,61%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">3</td>
+                                <td>DINAS SUMBER DAYA AIR, BINA MARGA DAN KONSTRUKSI</td>
+                                <td class="center-text">198</td>
+                                <td class="center-text">142</td>
+                                <td class="center-text negative-gap">-56</td>
+                                <td class="center-text medium-percentage">71,72%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">4</td>
+                                <td>BADAN PERENCANAAN DAN PENGEMBANGAN DAERAH</td>
+                                <td class="center-text">66</td>
+                                <td class="center-text">46</td>
+                                <td class="center-text negative-gap">-20</td>
+                                <td class="center-text medium-percentage">69,7%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">5</td>
+                                <td>SEKRETARIAT DPRD</td>
+                                <td class="center-text">59</td>
+                                <td class="center-text">37</td>
+                                <td class="center-text negative-gap">-18</td>
+                                <td class="center-text medium-percentage">68,07%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">6</td>
+                                <td>BADAN RISET DAN INOVASI DAERAH</td>
+                                <td class="center-text">37</td>
+                                <td class="center-text">22</td>
+                                <td class="center-text negative-gap">-15</td>
+                                <td class="center-text medium-percentage">59,49%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">7</td>
+                                <td>DINAS KETAHANAN PANGAN PERTANIAN PERIKANAN</td>
+                                <td class="center-text">150</td>
+                                <td class="center-text">28</td>
+                                <td class="center-text negative-gap">-122</td>
+                                <td class="center-text low-percentage">18,97%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">8</td>
+                                <td>DINAS KOMUNIKASI DAN INFORMATIKA</td>
+                                <td class="center-text">64</td>
+                                <td class="center-text">4</td>
+                                <td class="center-text negative-gap">-80</td>
+                                <td class="center-text low-percentage">6,25%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">9</td>
+                                <td>DINAS LINGKUNGAN HIDUP</td>
+                                <td class="center-text">112</td>
+                                <td class="center-text">7</td>
+                                <td class="center-text negative-gap">-106</td>
+                                <td class="center-text low-percentage">6,25%</td>
+                            </tr>
+                            <tr>
+                                <td class="center-text">10</td>
+                                <td>DINAS PEMBERDAYAAN PEREMPUAN, PERLINDUNGAN ANAK, PEMBERDAYAAN MASYARAKAT, DAN PELINDUNGAN KELUARGA BERENCANA</td>
+                                <td class="center-text">80</td>
+                                <td class="center-text">3</td>
+                                <td class="center-text negative-gap">-77</td>
+                                <td class="center-text low-percentage">3,79%</td>
                             </tr>
                         </tbody>
                     </table>
@@ -834,14 +958,14 @@
                         {
                             label: 'Jumlah ASN',
                             data: asnData,
-                            backgroundColor: '#004c99',
+                            backgroundColor: 'var(--color-primary)',
                             borderColor: '#003366',
                             borderWidth: 1
                         },
                         {
                             label: 'Jumlah Sertakan',
                             data: sertakanData,
-                            backgroundColor: '#28a745',
+                            backgroundColor: 'var(--color-green)',
                             borderColor: '#1e7e34',
                             borderWidth: 1
                         }
@@ -976,7 +1100,7 @@
         function showError(message) {
             const errorDiv = document.createElement('div');
             errorDiv.innerHTML = `
-                <div style="position: fixed; top: 20px; right: 20px; background: #dc3545; color: white; padding: 15px; border-radius: 8px; z-index: 10000; max-width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                <div style="position: fixed; top: 20px; right: 20px; background: var(--color-red); color: white; padding: 15px; border-radius: 8px; z-index: 10000; max-width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
                     <strong>Error:</strong> ${message}
                     <button onclick="this.parentElement.remove()" style="float: right; background: none; border: none; color: white; font-size: 18px; cursor: pointer; margin-left: 10px;">&times;</button>
                 </div>
@@ -988,25 +1112,6 @@
                     errorDiv.remove();
                 }
             }, 5000);
-        }
-
-        function addRefreshButton() {
-            const topBarLeft = document.querySelector('.top-bar-left');
-            if (topBarLeft) {
-                const refreshButton = document.createElement('button');
-                refreshButton.innerHTML = '🔄 Refresh';
-                refreshButton.className = 'refresh-button';
-                refreshButton.onclick = refreshData;
-                refreshButton.onmouseover = function() {
-                    this.style.background = '#e9eef2';
-                    this.style.transform = 'translateY(-1px)';
-                };
-                refreshButton.onmouseout = function() {
-                    this.style.background = 'var(--color-surface)';
-                    this.style.transform = 'translateY(0)';
-                };
-                topBarLeft.appendChild(refreshButton);
-            }
         }
 
         function refreshData() {
@@ -1036,6 +1141,4 @@
         }, 5 * 60 * 1000);
     </script>
 </body>
-
 </html>
-
