@@ -236,198 +236,152 @@
 
         /* --- STYLES BARU UNTUK TAMPILAN PILL CARD --- */
         .summary-area .title-container {
-    background-color: transparent;
-    box-shadow: none;
-    padding: 0;
-    margin-bottom: 8px; /* Diperkecil */
-    text-align: center;
-    width: 100%; /* Tambahkan width 100% */
-}
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
+            margin-bottom: 8px;
+            text-align: center;
+            width: 100%;
+        }
 
-.summary-area .title-container h2 {
-    background-color: var(--color-green-pill);
-    color: var(--color-text-light);
-    padding: 8px 25px; /* Diperkecil */
-    border-radius: 8px;
-    display: inline-block;
-    font-size: 1.1rem; /* Diperkecil */
-    font-weight: bold;
-    margin: 0 auto;
-    white-space: nowrap; /* Pastikan 1 baris */
-     width: 95%; /* Lebarkan hampir full width */
-    max-width: 100%; /* Pastikan tidak melebihi container */
-}
+        .summary-area .title-container h2 {
+            background-color: var(--color-green-pill);
+            color: var(--color-text-light);
+            padding: 8px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 0 auto;
+            white-space: nowrap;
+            width: 95%;
+            max-width: 100%;
+        }
 
-.summary-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 6px; /* Diperkecil */
-    margin-bottom: 8px; /* Diperkecil */
-}
+        .summary-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
 
-.summary-cards-row {
-    display: flex;
-    justify-content: center;
-    gap: 6px; /* Diperkecil */
-}
+        .summary-cards-row {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
 
-.summary-cards-row:last-child {
-    width: 70%; /* Diperkecil */
-    margin: 0 auto;
-    justify-content: space-between;
-}
+        .summary-cards-row:last-child {
+            width: 70%;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
 
-.summary-cards .card {
-    background: var(--color-green-pill);
-    color: white;
-    padding: 8px 12px; /* Diperkecil */
-    border-radius: 8px;
-    text-align: center;
-    min-width: 100px; /* Diperkecil */
-    max-width: 140px; /* Batas maksimal */
-    height: auto;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Diperkecil */
-    flex-grow: 1;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
+        .summary-cards .card {
+            background: var(--color-green-pill);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 100px;
+            max-width: 140px;
+            height: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
 
-.summary-cards-row:first-child .card {
-    min-width: 120px; /* Diperkecil */
-    max-width: 150px; /* Diperkecil */
-    padding: 10px 15px; /* Diperkecil */
-}
+        .summary-cards-row:first-child .card {
+            min-width: 120px;
+            max-width: 150px;
+            padding: 10px 15px;
+        }
 
-.summary-cards .card h3 {
-    font-size: 0.7rem; /* Diperkecil */
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.1; /* Dirapatkan */
-    color: var(--color-text-light);
-    margin-bottom: 3px; /* Diperkecil */
-}
+        .summary-cards .card h3 {
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.1;
+            color: var(--color-text-light);
+            margin-bottom: 3px;
+        }
 
-/* Tampilkan nilai angka */
-.summary-cards .card .value {
-    display: block !important;
-    font-size: 0.9rem; /* Diperkecil */
-    font-weight: bold;
-    margin-top: 3px; /* Diperkecil */
-    color: var(--color-text-light);
-}
+        /* Tampilkan nilai angka */
+        .summary-cards .card .value {
+            display: block !important;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 3px;
+            color: var(--color-text-light);
+        }
 
-.summary-cards .card.red-card {
-    background: var(--color-red-pill);
-}
+        .summary-cards .card.red-card {
+            background: var(--color-red-pill);
+        }
 
-/* Efek hover untuk interaktif */
-.summary-cards .card:hover {
-    transform: translateY(-1px); /* Diperkecil */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Responsive untuk mobile */
-@media (max-width: 900px) {
-    .summary-cards-row {
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .summary-cards-row:last-child {
-        width: 100%;
-    }
-
-    .summary-cards-row .card {
-        min-width: unset;
-        max-width: unset;
-        width: 100%;
-        padding: 8px 15px;
-    }
-    
-    .summary-area .title-container h2 {
-        padding: 6px 20px;
-        border-radius: 6px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 520px) {
-    .summary-area .title-container h2 {
-        padding: 5px 15px;
-        border-radius: 5px;
-        font-size: 0.9rem;
-    }
-    
-    .summary-cards .card {
-        padding: 6px 10px;
-        border-radius: 6px;
-    }
-    
-    .summary-cards .card h3 {
-        font-size: 0.65rem;
-    }
-    
-    .summary-cards .card .value {
-        font-size: 0.8rem;
-    }
-}
+        /* Efek hover untuk interaktif */
+        .summary-cards .card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
 
         /* Chart Styles */
         .chart-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 150px);
-    min-height: 300px;
-    padding: 5px; /* Tambahkan padding */
-}
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 150px);
+            min-height: 300px;
+            padding: 5px;
+        }
 
-.chart-wrapper {
-    flex-grow: 1;
-    position: relative;
-    background: var(--color-surface);
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
+        .chart-wrapper {
+            flex-grow: 1;
+            position: relative;
+            background: var(--color-surface);
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
 
-.chart-legend {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 8px;
-    padding: 5px;
-}
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 8px;
+            padding: 5px;
+        }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.75rem; /* Diperkecil */
-    font-weight: 500;
-}
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
 
-.legend-color {
-    width: 12px; /* Diperkecil */
-    height: 12px; /* Diperkecil */
-    border-radius: 3px;
-}
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
 
-.asn-color {
-    background-color: var(--color-primary);
-}
+        .asn-color {
+            background-color: var(--color-primary);
+        }
 
-.sertakan-color {
-    background-color: var(--color-green);
-}
+        .sertakan-color {
+            background-color: var(--color-green);
+        }
 
-/* Custom styling untuk Chart.js */
-#comparisonChart {
-    border-radius: 6px;
-}
+        /* Custom styling untuk Chart.js */
+        #comparisonChart {
+            border-radius: 6px;
+        }
 
         /* Table Styles */
         .table-area h2 {
@@ -526,6 +480,34 @@
             background-color: #f8fafc; 
         }
 
+        /* PERBAIKAN: Warna sel persentase berdasarkan nilai */
+        .data-table td.high-percentage-cell {
+            background-color: rgba(40, 167, 69, 0.7) !important;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+        }
+
+        .data-table td.medium-percentage-cell {
+            background-color: rgba(255, 205, 56, 0.95) !important;
+    color: var(--color-text-dark);
+    font-weight: bold;
+    font-size: 0.85rem;
+        }
+
+        .data-table td.low-percentage-cell {
+            background-color: rgba(193, 6, 24, 0.847) !important;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+        }
+
+        /* PERBAIKAN: Font GAP tetap hitam */
+        .data-table td.gap-cell {
+            color: var(--color-text-dark) !important;
+            font-weight: bold;
+        }
+
         /* Footer Styles */
         .main-footer {
             background: linear-gradient(135deg, var(--color-green), #20c997);
@@ -542,32 +524,6 @@
         .footer-text {
             margin: 0;
             line-height: 1.4;
-        }
-
-        /* Percentage Styles */
-        .high-percentage {
-            color: var(--color-green);
-            font-weight: bold;
-        }
-
-        .medium-percentage {
-            color: var(--color-orange);
-            font-weight: bold;
-        }
-
-        .low-percentage {
-            color: var(--color-red);
-            font-weight: bold;
-        }
-
-        .positive-gap {
-            color: var(--color-green);
-            font-weight: bold;
-        }
-
-        .negative-gap {
-            color: var(--color-red);
-            font-weight: bold;
         }
 
         /* Loading Spinner */
@@ -692,7 +648,6 @@
             .header-logo {
                 height: 50px;
             }
-            
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1133,28 +1088,25 @@
             data.forEach((item, index) => {
                 const row = document.createElement('tr');
                 
-                // Tentukan class untuk persentase
-                let persentaseClass = '';
+                // Tentukan class untuk sel persentase
+                let persentaseCellClass = '';
                 const actualPersentaseValue = (item.jumlahASN > 0 ? (item.jumlahSertakan / item.jumlahASN) * 100 : 0);
                 
                 if (actualPersentaseValue >= 100) {
-                    persentaseClass = 'high-percentage';
+                    persentaseCellClass = 'high-percentage-cell';
                 } else if (actualPersentaseValue >= 50) {
-                    persentaseClass = 'medium-percentage';
+                    persentaseCellClass = 'medium-percentage-cell';
                 } else {
-                    persentaseClass = 'low-percentage';
+                    persentaseCellClass = 'low-percentage-cell';
                 }
-
-                // Tentukan class untuk GAP
-                const gapClass = item.gap >= 0 ? 'positive-gap' : 'negative-gap';
                 
                 row.innerHTML = `
                     <td class="center-text">${item.no}</td>
                     <td>${item.namaDinas}</td>
                     <td class="center-text">${item.jumlahASN.toLocaleString('id-ID')}</td>
                     <td class="center-text">${item.jumlahSertakan.toLocaleString('id-ID')}</td>
-                    <td class="center-text ${gapClass}">${item.gap.toLocaleString('id-ID')}</td>
-                    <td class="center-text ${persentaseClass}">${actualPersentaseValue.toFixed(2).replace('.', ',')}%</td>
+                    <td class="center-text gap-cell">${item.gap.toLocaleString('id-ID')}</td>
+                    <td class="center-text ${persentaseCellClass}">${actualPersentaseValue.toFixed(2).replace('.', ',')}%</td>
                 `;
                 mainTableBody.appendChild(row);
             });
@@ -1278,6 +1230,3 @@
     </script>
 </body>
 </html>
-
-
-
