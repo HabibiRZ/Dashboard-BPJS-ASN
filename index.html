@@ -1084,33 +1084,41 @@
             const mainTableBody = document.getElementById('mainTableBody');
             mainTableBody.innerHTML = '';
 
+            // Hitung persentase & simpan ke tiap item agar bisa diurutkan
+            data.forEach(item => {
+                item.actualPersentaseValue = item.jumlahASN > 0 ? (item.jumlahSertakan / item.jumlahASN) * 100 : 0;
+            });
+
+            // Urutkan dari persentase tertinggi ke terendah
+            data.sort((a, b) => b.actualPersentaseValue - a.actualPersentaseValue);
+
             // Tambahkan baris data dinas
             data.forEach((item, index) => {
                 const row = document.createElement('tr');
                 
                 // Tentukan class untuk sel persentase
                 let persentaseCellClass = '';
-                const actualPersentaseValue = (item.jumlahASN > 0 ? (item.jumlahSertakan / item.jumlahASN) * 100 : 0);
-                
-                if (actualPersentaseValue >= 100) {
+                if (item.actualPersentaseValue >= 100) {
                     persentaseCellClass = 'high-percentage-cell';
-                } else if (actualPersentaseValue >= 50) {
+                } else if (item.actualPersentaseValue >= 50) {
                     persentaseCellClass = 'medium-percentage-cell';
                 } else {
                     persentaseCellClass = 'low-percentage-cell';
                 }
-                
+
+                // Isi baris tabel
                 row.innerHTML = `
-                    <td class="center-text">${item.no}</td>
+                    <td class="center-text">${index + 1}</td>
                     <td>${item.namaDinas}</td>
                     <td class="center-text">${item.jumlahASN.toLocaleString('id-ID')}</td>
                     <td class="center-text">${item.jumlahSertakan.toLocaleString('id-ID')}</td>
                     <td class="center-text gap-cell">${item.gap.toLocaleString('id-ID')}</td>
-                    <td class="center-text ${persentaseCellClass}">${actualPersentaseValue.toFixed(2).replace('.', ',')}%</td>
+                    <td class="center-text ${persentaseCellClass}">${item.actualPersentaseValue.toFixed(2).replace('.', ',')}%</td>
                 `;
                 mainTableBody.appendChild(row);
             });
         }
+
 
         function updateConnectionStatus(status, message) {
             const statusElement = document.getElementById('connectionStatus');
