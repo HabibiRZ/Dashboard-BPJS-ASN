@@ -675,12 +675,12 @@
             <div class="top-bar-left">
                 <span id="updateDataTimestamp">Update data per tgl. 21 Oct 2025 11:05:30</span> 
                 <span id="dataCountInfo" style="font-weight: 700;"></span>
-            </div>
+        </div>
 
-            <div class="top-bar-center">
-    <a href="index.html" class="top-bar-button">Home</a>
-    <a href="topworst.html" class="top-bar-button active">Top & Worst</a>
-</div>
+        <div class="top-bar-center">
+            <a href="index.html" class="top-bar-button">Home</a>
+            <a href="topworst.html" class="top-bar-button active">Top & Worst</a>
+        </div>
             <div>
                 <span class="status-indicator status-loading" id="connectionStatus">Memuat...</span>
                 <button class="refresh-button" id="refreshButton">&#x21BB; Refresh Data</button>
@@ -844,6 +844,7 @@
 
             return rawData.map((row) => {
                 const namaDinas = row[1] ? row[1].trim() : '';
+                console.log(namaDinas)
                 
                 // Skip dinas yang dikecualikan, kosong, atau merupakan baris total
                 if (!namaDinas || excludedDinas.includes(namaDinas.toUpperCase()) || namaDinas.toUpperCase() === 'TOTAL') {
@@ -1086,7 +1087,9 @@
 
             // Hitung persentase & simpan ke tiap item agar bisa diurutkan
             data.forEach(item => {
-                item.actualPersentaseValue = item.jumlahASN > 0 ? (item.jumlahSertakan / item.jumlahASN) * 100 : 0;
+                item.actualPersentaseValue = item.jumlahASN > 0
+                    ? (item.jumlahSertakan / item.jumlahASN) * 100
+                    : 0;
             });
 
             // Urutkan dari persentase tertinggi ke terendah
@@ -1109,15 +1112,30 @@
                 // Isi baris tabel
                 row.innerHTML = `
                     <td class="center-text">${index + 1}</td>
-                    <td>${item.namaDinas}</td>
+                    <td class="clickable-dinas" data-dinas="${item.namaDinas}">
+                        ${item.namaDinas}
+                    </td>
                     <td class="center-text">${item.jumlahASN.toLocaleString('id-ID')}</td>
                     <td class="center-text">${item.jumlahSertakan.toLocaleString('id-ID')}</td>
                     <td class="center-text gap-cell">${item.gap.toLocaleString('id-ID')}</td>
-                    <td class="center-text ${persentaseCellClass}">${item.actualPersentaseValue.toFixed(2).replace('.', ',')}%</td>
+                    <td class="center-text ${persentaseCellClass}">
+                        ${item.actualPersentaseValue.toFixed(2).replace('.', ',')}%
+                    </td>
                 `;
                 mainTableBody.appendChild(row);
             });
+
+            // 🔹 Tambahkan event klik setelah tabel selesai di-render
+            document.querySelectorAll('.clickable-dinas').forEach(cell => {
+                cell.style.cursor = 'pointer';
+                cell.style.color = '#007bff';
+                cell.addEventListener('click', () => {
+                    const dinas = cell.getAttribute('data-dinas');
+                    window.location.href = `detail.html?dinas=${encodeURIComponent(dinas)}`;
+                }); 
+            });
         }
+
 
 
         function updateConnectionStatus(status, message) {
