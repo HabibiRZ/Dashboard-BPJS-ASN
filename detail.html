@@ -196,7 +196,7 @@
         .dashboard {
             display: grid;
             grid-template-areas: "summary table";
-            grid-template-columns: 40% 60%;
+            grid-template-columns: 50% 60%;
             grid-template-rows: 1fr;
             gap: 10px;
             flex-grow: 1;
@@ -272,7 +272,7 @@
         }
 
         .summary-cards-row:last-child {
-            width: 70%;
+            width: 40%;
             margin: 0 auto;
             justify-content: space-between;
         }
@@ -417,7 +417,7 @@
         }
 
         .data-table {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
             table-layout: fixed;
         }
@@ -462,19 +462,19 @@
         }
 
         .data-table th:nth-child(2), .data-table td:nth-child(2) { 
-            width: 42%;
+            width: 35%;
         }
 
         .data-table th:nth-child(3), .data-table td:nth-child(3) { 
-            width: 12%;
+            width: 10%;
         }
 
         .data-table th:nth-child(4), .data-table td:nth-child(4) { 
-            width: 12%;
+            width: 9%;
         }
 
         .data-table th:nth-child(5), .data-table td:nth-child(5) { 
-            width: 12%;
+            width: 9%;
         }
 
         .data-table th:nth-child(6), .data-table td:nth-child(6) { 
@@ -541,6 +541,38 @@
             animation: spin 1s linear infinite;
             margin: 0 auto;
         }
+
+
+        /* Area scroll tabel */
+        .table-scroll {
+        max-height: 250px; /* tinggi area scroll */
+        overflow-y: auto;
+        }
+
+        /* Header tetap di atas saat scroll */
+        .table-scroll thead th {
+        position: sticky;
+        top: 0;
+        background: #f8f8f8;
+        z-index: 2;
+        box-shadow: 0 2px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Biar tabel tetap proporsional */
+        .table-scroll table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+
+        /* Optional: agar scrollbar halus */
+        .table-scroll::-webkit-scrollbar {
+        width: 6px;
+        }
+        .table-scroll::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 3px;
+        }
+
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -729,24 +761,29 @@
                   <div class="top-worst-wrapper">
                     <div class="table-box top-box">
                         <div class="table-header blue-header">TOP</div>
+                        <div class="table-scroll">
                         <table>
-                        <thead>
+                            <thead>
                             <tr><th>No</th><th>Nama Pegawai</th><th>Realisasi</th><th>GAP</th><th>%</th></tr>
-                        </thead>
-                        <tbody></tbody>
+                            </thead>
+                            <tbody></tbody>
                         </table>
+                        </div>
                     </div>
 
                     <div class="table-box worst-box">
                         <div class="table-header red-header">WORST</div>
+                        <div class="table-scroll">
                         <table>
-                        <thead>
+                            <thead>
                             <tr><th>No</th><th>Nama Pegawai</th><th>Realisasi</th><th>GAP</th><th>%</th></tr>
-                        </thead>
-                        <tbody></tbody>
+                            </thead>
+                            <tbody></tbody>
                         </table>
+                        </div>
                     </div>
-                    </div>
+                </div>
+
 
               </div> 
 
@@ -880,9 +917,12 @@ function updateSummaryCards(data) {
 
 // 🔹 Update Tabel Utama
 function updateMainTable(data) {
-    console.log(data)
+  console.log(data);
   const tbody = document.getElementById('mainTableBody');
   tbody.innerHTML = '';
+
+  // Urutkan berdasarkan persentase (dari besar ke kecil)
+  data.sort((a, b) => b.persentaseValue - a.persentaseValue);
 
   data.forEach((item, index) => {
     const row = document.createElement('tr');
@@ -905,11 +945,15 @@ function updateMainTable(data) {
   });
 }
 
+
 // 🔹 Update Tabel TOP & WORST
 function updateTopWorstTables(data) {
+  // Urutkan dari persentase tertinggi ke terendah
   const sorted = [...data].sort((a, b) => b.persentaseValue - a.persentaseValue);
-  const top = sorted.slice(0, 3);
-  const worst = sorted.slice(-3).reverse();
+
+  // Ambil 10 terbaik dan 10 terburuk
+  const top = sorted.slice(0, 10);
+  const worst = sorted.slice(-10).reverse();
 
   const topBody = document.querySelector(".top-box tbody");
   const worstBody = document.querySelector(".worst-box tbody");
@@ -918,9 +962,9 @@ function updateTopWorstTables(data) {
     <tr>
       <td>${i + 1}</td>
       <td>${d.namaPegawai}</td>
-      <td>${d.realisasi}</td>
-      <td>${d.gap}</td>
-      <td>${d.persentase}</td>
+      <td class="center-text">${d.realisasi.toLocaleString('id-ID')}</td>
+      <td class="center-text">${d.gap.toLocaleString('id-ID')}</td>
+      <td class="center-text">${d.persentase}</td>
     </tr>
   `).join('');
 
@@ -928,14 +972,14 @@ function updateTopWorstTables(data) {
     <tr>
       <td>${i + 1}</td>
       <td>${d.namaPegawai}</td>
-      <td>${d.realisasi}</td>
-      <td>${d.gap}</td>
-      <td>${d.persentase}</td>
+      <td class="center-text">${d.realisasi.toLocaleString('id-ID')}</td>
+      <td class="center-text">${d.gap.toLocaleString('id-ID')}</td>
+      <td class="center-text">${d.persentase}</td>
     </tr>
   `).join('');
 }
-</script>
 
+</script>
 
 </body>
 </html>
