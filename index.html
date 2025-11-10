@@ -41,7 +41,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             flex-grow: 1;
             background: var(--color-surface);
@@ -258,56 +258,37 @@
             max-width: 100%;
         }
 
+        /* PERBAIKAN: Susunan cards horizontal seperti di gambar */
         .summary-cards {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             gap: 6px;
             margin-bottom: 8px;
-        }
-
-        .summary-cards-row {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .summary-cards-row:last-child {
-            width: 70%;
-            margin: 0 auto;
-            justify-content: space-between;
         }
 
         .summary-cards .card {
             background: var(--color-green-pill);
             color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 8px 4px;
+            border-radius: 6px;
             text-align: center;
-            min-width: 100px;
-            max-width: 140px;
-            height: auto;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            flex-grow: 1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border: none;
             display: flex;
             flex-direction: column;
             justify-content: center;
             transition: all 0.3s ease;
-        }
-
-        .summary-cards-row:first-child .card {
-            min-width: 120px;
-            max-width: 150px;
-            padding: 10px 15px;
+            min-height: 65px;
+            flex: 1;
         }
 
         .summary-cards .card h3 {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             margin: 0;
             line-height: 1.1;
             color: var(--color-text-light);
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         /* Tampilkan nilai angka */
@@ -315,7 +296,6 @@
             display: block !important;
             font-size: 0.9rem;
             font-weight: bold;
-            margin-top: 3px;
             color: var(--color-text-light);
         }
 
@@ -334,8 +314,8 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            height: calc(100% - 150px);
-            min-height: 300px;
+            height: calc(100% - 90px);
+            min-height: 250px;
             padding: 5px;
         }
 
@@ -388,13 +368,13 @@
             text-align: left;
             margin-bottom: 5px;
             padding: 0 5px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--color-primary);
         }
 
         .data-table-container {
-            height: calc(100% - 40px);
+            height: calc(100% - 35px);
             max-height: none;
             overflow-y: auto;
             overflow-x: auto;
@@ -421,8 +401,8 @@
             position: sticky;
             top: 0;
             z-index: 15;
-            padding: 8px 6px;
-            font-size: 0.75rem;
+            padding: 6px 4px;
+            font-size: 0.65rem;
             text-align: center;
             line-height: 1.1;
             background: linear-gradient(135deg, var(--color-green), var(--color-green-dark));
@@ -433,6 +413,12 @@
             letter-spacing: 0.3px;
             border: 1px solid #1e7e34;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .data-table thead th:hover {
+            background: linear-gradient(135deg, var(--color-green-dark), #155724);
         }
 
         .data-table th:first-child, .data-table td:first-child {
@@ -444,20 +430,20 @@
         }
 
         .data-table td {
-            padding: 4px 6px;
-            font-size: 0.8rem;
+            padding: 3px 4px;
+            font-size: 0.7rem;
             text-align: left;
             border-bottom: 1px solid #edf2f7;
-            min-height: 35px;
-            height: 35px;
+            min-height: 30px;
+            height: 30px;
         }
 
         .data-table th:nth-child(1), .data-table td:nth-child(1) { 
-            width: 8%;
+            width: 5%;
         }
 
         .data-table th:nth-child(2), .data-table td:nth-child(2) { 
-            width: 42%;
+            width: 38%;
         }
 
         .data-table th:nth-child(3), .data-table td:nth-child(3) { 
@@ -473,7 +459,7 @@
         }
 
         .data-table th:nth-child(6), .data-table td:nth-child(6) { 
-            width: 14%;
+            width: 21%;
         }
 
         .data-table tr:nth-child(even) { 
@@ -483,23 +469,23 @@
         /* PERBAIKAN: Warna sel persentase berdasarkan nilai */
         .data-table td.high-percentage-cell {
             background-color: rgba(40, 167, 69, 0.7) !important;
-    color: white;
-    font-weight: bold;
-    font-size: 0.85rem;
+            color: white;
+            font-weight: bold;
+            font-size: 0.7rem;
         }
 
         .data-table td.medium-percentage-cell {
             background-color: rgba(255, 205, 56, 0.95) !important;
-    color: var(--color-text-dark);
-    font-weight: bold;
-    font-size: 0.85rem;
+            color: var(--color-text-dark);
+            font-weight: bold;
+            font-size: 0.7rem;
         }
 
         .data-table td.low-percentage-cell {
             background-color: rgba(193, 6, 24, 0.847) !important;
-    color: white;
-    font-weight: bold;
-    font-size: 0.85rem;
+            color: white;
+            font-weight: bold;
+            font-size: 0.7rem;
         }
 
         /* PERBAIKAN: Font GAP tetap hitam */
@@ -602,19 +588,13 @@
                 margin: 5px 0;
             }
             
-            .summary-cards-row {
-                flex-direction: column;
-                gap: 8px;
+            .summary-cards {
+                flex-wrap: wrap;
             }
 
-            .summary-cards-row:last-child {
-                width: 100%;
-            }
-
-            .summary-cards-row .card {
-                min-width: unset;
-                width: 100%;
-                padding: 10px 15px;
+            .summary-cards .card {
+                flex: 1 0 45%;
+                margin-bottom: 8px;
             }
             
             .data-table-container {
@@ -630,7 +610,7 @@
 
         @media (max-width: 520px) {
             .summary-cards {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
             
             .header-title h1 {
@@ -664,7 +644,7 @@
                 <h1>DASHBOARD SERTAKAN</h1>
                 <p>(Sejahterakan Pekerja Sekitar Anda)</p>
                 <h2>PEMERINTAH KOTA MEDAN</h2>
-                <p class="subtitle">Sesuai SURAT EDARAN Nomor : 500.151/4306 Tahun 2025</p>
+                <p class="subtitle">Sesuai SURAT EDARAN Nomor : 500.15.1/4306 Tahun 2025</p>
             </div>
             <div class="header-section">
                 <img src="walkot.jpg" alt="Logo BPJS Ketenagakerjaan" class="header-logo">
@@ -673,14 +653,14 @@
         
         <div class="top-bar">
             <div class="top-bar-left">
-                <span id="updateDataTimestamp">Update data per tgl. 21 Oct 2025 11:05:30</span> 
+                <span id="updateDataTimestamp">Update data per tgl. 10 Nov 2025 09:51:43</span> 
                 <span id="dataCountInfo" style="font-weight: 700;"></span>
-        </div>
+            </div>
 
-        <div class="top-bar-center">
-            <a href="index.html" class="top-bar-button">Home</a>
-            <a href="topworst.html" class="top-bar-button active">Top & Worst</a>
-        </div>
+            <div class="top-bar-center">
+                <a href="index.html" class="top-bar-button">Home</a>
+                <a href="topworst.html" class="top-bar-button active">Top & Worst</a>
+            </div>
             <div>
                 <span class="status-indicator status-loading" id="connectionStatus">Memuat...</span>
                 <button class="refresh-button" id="refreshButton">&#x21BB; Refresh Data</button>
@@ -693,31 +673,27 @@
                     <h2>Rekap Sertakan ASN Kota Medan</h2>
                 </div>
                 
+                <!-- PERBAIKAN: Susunan cards horizontal seperti di gambar -->
                 <div class="summary-cards">
-                    <div class="summary-cards-row">
-                        <div class="card">
-                            <h3>Jumlah OPD</h3>
-                            <div class="value" id="jumlahOPD">32</div>
-                        </div>
-                        <div class="card">
-                            <h3>Jumlah ASN<br>(1 peserta / ASN)</h3>
-                            <div class="value" id="jumlahASN">11.734</div>
-                        </div>
-                        <div class="card">
-                            <h3>Jumlah Akuisisi Sertakan ASN</h3>
-                            <div class="value" id="jumlahAkuisisi">445</div>
-                        </div>
+                    <div class="card">
+                        <h3>Jumlah OPD</h3>
+                        <div class="value" id="jumlahOPD">32</div>
                     </div>
-
-                    <div class="summary-cards-row">
-                        <div class="card">
-                            <h3>Sisa Target</h3>
-                            <div class="value" id="sisaTarget">-0</div>
-                        </div>
-                        <div class="card red-card">
-                            <h3>% Akuisisi Sertakan ASN</h3>
-                            <div class="value" id="persentaseAkuisisi">0%</div>
-                        </div>
+                    <div class="card">
+                        <h3>Jumlah ASN<br>(peserta / ASN)</h3>
+                        <div class="value" id="jumlahASN">11.735</div>
+                    </div>
+                    <div class="card">
+                        <h3>Jumlah Akuisisi Sertakan ASN</h3>
+                        <div class="value" id="jumlahAkuisisi">541</div>
+                    </div>
+                    <div class="card">
+                        <h3>Seat Tersisa</h3>
+                        <div class="value" id="sisaTarget">-11.194</div>
+                    </div>
+                    <div class="card red-card">
+                        <h3>% Akuisisi Sertakan ASN</h3>
+                        <div class="value" id="persentaseAkuisisi">4.61%</div>
                     </div>
                 </div>
                 
@@ -739,16 +715,17 @@
             </div>
 
             <div class="panel table-area">
+                <h2>Nama Dinas</h2>
                 <div class="data-table-container"> 
                     <table class="data-table" id="mainDataTable">
                         <thead>
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Dinas</th>
-                                <th>Jumlah ASN</th>
-                                <th>Jumlah Sertakan</th>
-                                <th>G A P</th>
-                                <th>%</th>
+                                <th class="sortable" data-sort="jumlahASN">Jumlah ASN</th>
+                                <th class="sortable" data-sort="jumlahSertakan">Jumlah Sertakan</th>
+                                <th class="sortable" data-sort="gap">G A P</th>
+                                <th class="sortable" data-sort="persentaseValue">%</th>
                             </tr>
                         </thead>
                         <tbody id="mainTableBody">
@@ -766,8 +743,6 @@
 
     <script>
         // Konfigurasi Google Sheets - REKAP SERTAKAN range A7:I39
-        // PERINGATAN: API Key sebaiknya tidak disimpan di frontend untuk keamanan
-        // Alternatif: gunakan backend sebagai proxy untuk mengakses Google Sheets API
         const SHEET_CONFIG = {
             sheetId: "1mAiO9chbwAJ93s-xMXwjv-q1uBvOnErFQRO5Z1hha5o",
             apiKey: "AIzaSyDDChj-Syqytv2HboLnbflQu7-u_5VAYIE",
@@ -777,6 +752,8 @@
 
         let comparisonChart = null;
         let autoRefreshInterval = null;
+        let currentData = [];
+        let currentSort = { column: 'persentaseValue', direction: 'desc' };
 
         document.addEventListener('DOMContentLoaded', async () => {
             updateCurrentDate();
@@ -785,10 +762,14 @@
             // Setup event listener untuk tombol refresh
             document.getElementById('refreshButton').addEventListener('click', refreshData);
             
+            // Setup event listener untuk sorting header tabel
+            setupTableSorting();
+            
             try {
                 const data = await fetchGoogleSheetsData();
                 if (data && data.length > 0) {
                     document.getElementById('mainTableBody').innerHTML = '';
+                    currentData = data;
                     updateDashboard(data);
                     updateConnectionStatus('online', `${data.length} data berhasil dimuat`);
                 } else {
@@ -804,6 +785,63 @@
             // Auto-refresh setiap 5 menit
             startAutoRefresh();
         });
+
+        function setupTableSorting() {
+            document.querySelectorAll('.sortable').forEach(header => {
+                header.addEventListener('click', function() {
+                    const column = this.getAttribute('data-sort');
+                    sortTable(column);
+                });
+            });
+        }
+
+        function sortTable(column) {
+            // Toggle direction jika kolom yang sama diklik
+            if (currentSort.column === column) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.column = column;
+                currentSort.direction = 'desc'; // Default descending
+            }
+
+            // Sort data
+            const sortedData = [...currentData].sort((a, b) => {
+                let aValue = a[column];
+                let bValue = b[column];
+
+                // Handle persentase khusus
+                if (column === 'persentaseValue') {
+                    aValue = a.persentaseValue;
+                    bValue = b.persentaseValue;
+                }
+
+                if (currentSort.direction === 'asc') {
+                    return aValue - bValue;
+                } else {
+                    return bValue - aValue;
+                }
+            });
+
+            // Update tabel dengan data yang sudah diurutkan
+            updateMainTable(sortedData);
+
+            // Update indicator sorting di header
+            updateSortIndicators();
+        }
+
+        function updateSortIndicators() {
+            // Reset semua header
+            document.querySelectorAll('.sortable').forEach(header => {
+                header.innerHTML = header.textContent.replace(' ↑', '').replace(' ↓', '');
+            });
+
+            // Tambah indicator ke header yang aktif
+            const activeHeader = document.querySelector(`[data-sort="${currentSort.column}"]`);
+            if (activeHeader) {
+                const indicator = currentSort.direction === 'asc' ? ' ↑' : ' ↓';
+                activeHeader.innerHTML = activeHeader.textContent + indicator;
+            }
+        }
 
         async function fetchGoogleSheetsData() {
             const encodedSheetName = encodeURIComponent(SHEET_CONFIG.sheetName);
@@ -844,7 +882,6 @@
 
             return rawData.map((row) => {
                 const namaDinas = row[1] ? row[1].trim() : '';
-                console.log(namaDinas)
                 
                 // Skip dinas yang dikecualikan, kosong, atau merupakan baris total
                 if (!namaDinas || excludedDinas.includes(namaDinas.toUpperCase()) || namaDinas.toUpperCase() === 'TOTAL') {
@@ -943,157 +980,145 @@
             console.log(`📊 Summary Updated | OPD:${jumlahOPD} | ASN:${jumlahASN} | Akuisisi:${jumlahAkuisisi} | Sisa:${sisaTarget} | %:${persentaseAkuisisi}`);
         }
 
-       function updateComparisonChart(data) {
-    const topDinas = [...data]
-        .filter(d => d.persentaseValue > 0) 
-        .sort((a, b) => b.persentaseValue - a.persentaseValue)
-        .slice(0, 7);
+        function updateComparisonChart(data) {
+            const topDinas = [...data]
+                .filter(d => d.persentaseValue > 0) 
+                .sort((a, b) => b.persentaseValue - a.persentaseValue)
+                .slice(0, 7);
 
-    const ctx = document.getElementById('comparisonChart').getContext('2d');
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
 
-    if (comparisonChart) {
-        comparisonChart.destroy();
-    }
-
-    const labels = topDinas.map(d => {
-        const words = d.namaDinas.split(' ');
-        if (words.length > 2) {
-            return words.slice(0, 2).join(' ') + '...';
-        }
-        return d.namaDinas.length > 15 ? d.namaDinas.substring(0, 15) + '...' : d.namaDinas;
-    });
-
-    const asnData = topDinas.map(d => d.jumlahASN);
-    const sertakanData = topDinas.map(d => d.jumlahSertakan);
-
-    comparisonChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Jumlah ASN',
-                    data: asnData,
-                    backgroundColor: '#004c99',
-                    borderColor: '#003366',
-                    borderWidth: 1,
-                    barPercentage: 0.6,
-                    categoryPercentage: 0.8
-                },
-                {
-                    label: 'Jumlah Sertakan',
-                    data: sertakanData,
-                    backgroundColor: '#28a745',
-                    borderColor: '#1e7e34',
-                    borderWidth: 1,
-                    barPercentage: 0.6,
-                    categoryPercentage: 0.8
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            // HAPUS layout padding yang mungkin mengganggu
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 11
-                        },
-                        maxRotation: 45
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0,0,0,0.05)'
-                    },
-                    ticks: {
-                        font: {
-                            size: 11
-                        },
-                        callback: function(value) {
-                            if (value >= 1000) {
-                                return (value / 1000).toFixed(0) + 'K';
-                            }
-                            return value;
-                        }
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    enabled: true, // PASTIKAN tooltip di-enable
-                    mode: 'index',
-                    intersect: false,
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                    titleColor: '#ffffff',
-                    bodyColor: '#ffffff',
-                    titleFont: {
-                        size: 12,
-                        weight: 'bold'
-                    },
-                    bodyFont: {
-                        size: 11
-                    },
-                    padding: 10,
-                    cornerRadius: 6,
-                    displayColors: true, // TAMPILKAN WARNA
-                    callbacks: {
-                        title: function(tooltipItems) {
-                            const index = tooltipItems[0].dataIndex;
-                            return topDinas[index].namaDinas;
-                        },
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            label += context.parsed.y.toLocaleString('id-ID');
-                            return label;
-                        },
-                        afterLabel: function(context) {
-                            const index = context.dataIndex;
-                            const dinas = topDinas[index];
-                            return `Persentase: ${dinas.persentase}`;
-                        }
-                    }
-                }
-            },
-            // Konfigurasi hover yang sederhana
-            hover: {
-                mode: 'index',
-                intersect: false
-            },
-            elements: {
-                point: {
-                    hoverRadius: 5
-                }
+            if (comparisonChart) {
+                comparisonChart.destroy();
             }
+
+            const labels = topDinas.map(d => {
+                const words = d.namaDinas.split(' ');
+                if (words.length > 2) {
+                    return words.slice(0, 2).join(' ') + '...';
+                }
+                return d.namaDinas.length > 15 ? d.namaDinas.substring(0, 15) + '...' : d.namaDinas;
+            });
+
+            const asnData = topDinas.map(d => d.jumlahASN);
+            const sertakanData = topDinas.map(d => d.jumlahSertakan);
+
+            comparisonChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Jumlah ASN',
+                            data: asnData,
+                            backgroundColor: '#004c99',
+                            borderColor: '#003366',
+                            borderWidth: 1,
+                            barPercentage: 0.6,
+                            categoryPercentage: 0.8
+                        },
+                        {
+                            label: 'Jumlah Sertakan',
+                            data: sertakanData,
+                            backgroundColor: '#28a745',
+                            borderColor: '#1e7e34',
+                            borderWidth: 1,
+                            barPercentage: 0.6,
+                            categoryPercentage: 0.8
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                },
+                                maxRotation: 45
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0,0,0,0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                },
+                                callback: function(value) {
+                                    if (value >= 1000) {
+                                        return (value / 1000).toFixed(0) + 'K';
+                                    }
+                                    return value;
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true,
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff',
+                            titleFont: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 11
+                            },
+                            padding: 10,
+                            cornerRadius: 6,
+                            displayColors: true,
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const index = tooltipItems[0].dataIndex;
+                                    return topDinas[index].namaDinas;
+                                },
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += context.parsed.y.toLocaleString('id-ID');
+                                    return label;
+                                },
+                                afterLabel: function(context) {
+                                    const index = context.dataIndex;
+                                    const dinas = topDinas[index];
+                                    return `Persentase: ${dinas.persentase}`;
+                                }
+                            }
+                        }
+                    },
+                    hover: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    elements: {
+                        point: {
+                            hoverRadius: 5
+                        }
+                    }
+                }
+            });
         }
-    });
-}
 
         function updateMainTable(data) {
             const mainTableBody = document.getElementById('mainTableBody');
             mainTableBody.innerHTML = '';
-
-            // Hitung persentase & simpan ke tiap item agar bisa diurutkan
-            data.forEach(item => {
-                item.actualPersentaseValue = item.jumlahASN > 0
-                    ? (item.jumlahSertakan / item.jumlahASN) * 100
-                    : 0;
-            });
-
-            // Urutkan dari persentase tertinggi ke terendah
-            data.sort((a, b) => b.actualPersentaseValue - a.actualPersentaseValue);
 
             // Tambahkan baris data dinas
             data.forEach((item, index) => {
@@ -1101,9 +1126,9 @@
                 
                 // Tentukan class untuk sel persentase
                 let persentaseCellClass = '';
-                if (item.actualPersentaseValue >= 100) {
+                if (item.persentaseValue >= 100) {
                     persentaseCellClass = 'high-percentage-cell';
-                } else if (item.actualPersentaseValue >= 50) {
+                } else if (item.persentaseValue >= 50) {
                     persentaseCellClass = 'medium-percentage-cell';
                 } else {
                     persentaseCellClass = 'low-percentage-cell';
@@ -1119,13 +1144,13 @@
                     <td class="center-text">${item.jumlahSertakan.toLocaleString('id-ID')}</td>
                     <td class="center-text gap-cell">${item.gap.toLocaleString('id-ID')}</td>
                     <td class="center-text ${persentaseCellClass}">
-                        ${item.actualPersentaseValue.toFixed(2).replace('.', ',')}%
+                        ${item.persentase}
                     </td>
                 `;
                 mainTableBody.appendChild(row);
             });
 
-            // 🔹 Tambahkan event klik setelah tabel selesai di-render
+            // Tambahkan event klik untuk dinas
             document.querySelectorAll('.clickable-dinas').forEach(cell => {
                 cell.style.cursor = 'pointer';
                 cell.style.color = '#007bff';
@@ -1135,8 +1160,6 @@
                 }); 
             });
         }
-
-
 
         function updateConnectionStatus(status, message) {
             const statusElement = document.getElementById('connectionStatus');
@@ -1220,6 +1243,7 @@
             fetchGoogleSheetsData()
                 .then(data => {
                     if (data && data.length > 0) {
+                        currentData = data;
                         updateDashboard(data);
                         updateConnectionStatus('online', `${data.length} data berhasil dimuat`);
                         console.log(`✅ Data refreshed successfully: ${data.length} records`);
