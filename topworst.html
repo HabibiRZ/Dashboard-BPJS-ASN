@@ -30,9 +30,9 @@
             --color-worst-title-dark: #b02a37; 
 
             /* WARNA TABLE HEADER (THEAD) - Biru dan Merah (Sesuai Permintaan) */
-            --color-top-header: var(--color-primary); /* Biru */
-            --color-top-header-dark: #003366; 
-            --color-worst-header: var(--color-red); /* Merah */
+            --color-top-header: #0d6efd; /* Biru yang diminta sebelumnya */
+            --color-top-header-dark: #004c99; 
+            --color-worst-header: #dc3545; /* Merah yang diminta sebelumnya */
             --color-worst-header-dark: #b02a37;
 
             /* WARNA CHART */
@@ -52,13 +52,15 @@
             color: var(--color-text-dark);
             min-height: 100vh;
             padding: 10px;
-            overflow-x: hidden;
+            overflow-x: auto; /* Memungkinkan scroll horizontal jika layar sangat kecil */
             display: flex;
             flex-direction: column;
         }
 
         .container {
-            max-width: 1200px;
+            /* 1. MELEBARKAN CONTAINER: Meningkatkan max-width */
+            max-width: 1500px; 
+            width: 100%; /* Pastikan mengisi lebar yang tersedia */
             margin: 0 auto;
             flex-grow: 1;
             background: var(--color-surface);
@@ -68,6 +70,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            /* Hapus tinggi tetap agar bisa beradaptasi jika ada overflow */
             height: calc(100vh - 20px);
             overflow: hidden;
         }
@@ -220,12 +223,13 @@
             margin-left: 10px;
         }
 
-        /* Dashboard Layout - Layout khusus untuk Top & Worst */
+        /* Dashboard Layout - Layout PC (Dipertahankan di semua ukuran layar) */
         .dashboard {
             display: flex;
             flex-direction: column;
             gap: 10px;
             flex-grow: 1;
+            /* Mengatur tinggi total area konten */
             height: calc(100vh - 200px);
             overflow: hidden;
         }
@@ -239,6 +243,17 @@
             flex-direction: column;
             overflow: hidden;
         } 
+        /* Pastikan chart-area-full (dulu summary-area) juga diatur tingginya */
+        .chart-area-full {
+             padding: 10px; 
+            height: 65%; 
+            min-height: 250px;
+            max-height: none;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
 
         .tables-area {
             display: flex;
@@ -255,6 +270,17 @@
             overflow: hidden;
         }
 
+        /* Panel Styles */
+        .panel {
+            background-color: var(--color-surface);
+            padding: 15px;
+            border: 1px solid #edf2f7;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        
         /* Chart Styles */
         .chart-container {
             flex-grow: 1;
@@ -273,17 +299,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         
-        /* Warna legend di Chart.js */
-        .asn-color { background-color: var(--chart-asn-color); }
-        .sertakan-color { background-color: var(--chart-sertakan-color); }
-
-        /* Style untuk blok warna di legend (dipertahankan ukurannya) */
-        .asn-color, .sertakan-color { 
-            width: 12px; 
-            height: 12px; 
-            border-radius: 3px; 
-        }
-
         /* Table Styles */
         .table-title {
             text-align: center;
@@ -296,7 +311,7 @@
             white-space: nowrap;
         }
 
-        /* WARNA TABLE TITLE (Judul di atas tabel - Kembali ke Hijau/Merah) */
+        /* WARNA TABLE TITLE */
         .top-table-title {
             background: linear-gradient(90deg, var(--color-top-title-dark), var(--color-top-title)); /* HIJAU */
         }
@@ -307,13 +322,15 @@
 
         /* WARNA TABLE HEADER (THEAD) - Biru dan Merah */
         .data-table thead.top-header-color th {
-            background: linear-gradient(135deg, var(--color-top-header), var(--color-top-header-dark)); /* BIRU */
+            /* Warna Biru Tua */
+            background: linear-gradient(135deg, var(--color-top-header), var(--color-top-header-dark)); 
             color: var(--color-text-light);
             border: 1px solid #003366;
         }
         
         .data-table thead.worst-header-color th {
-            background: linear-gradient(135deg, var(--color-worst-header), var(--color-worst-header-dark)); /* MERAH */
+            /* Warna Merah Tua */
+            background: linear-gradient(135deg, var(--color-worst-header), var(--color-worst-header-dark)); 
             color: var(--color-text-light);
             border: 1px solid #b02a37;
         }
@@ -325,12 +342,13 @@
             border-radius: var(--border-radius);
             border: 1px solid #edf2f7;
             box-shadow: var(--box-shadow);
+            position: relative; /* Penting untuk sticky header */
         }
 
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed;
+            table-layout: fixed; /* Mencegah pergeseran saat filter */
         }
 
         .data-table thead th {
@@ -341,19 +359,15 @@
             font-size: 0.7rem;
             text-align: center;
             line-height: 1.1;
-            /* Default fallback */
-            background: var(--color-surface); 
-            color: var(--color-text-dark);
             font-weight: 600;
             white-space: normal;
             text-transform: uppercase;
             letter-spacing: 0.3px;
-            /* Default fallback */
-            border: 1px solid #e0e0e0;
         }
         
+        /* Lebar Kolom Dipertahankan */
         .data-table th:nth-child(1), .data-table td:nth-child(1) { width: 10%; } 
-        .data-table th:nth-child(2), .data-table td:nth-child(2) { width: 35%; } 
+        .data-table th:nth-child(2), .data-table td:nth-child(2) { width: 35%; text-align: left; } /* Nama Dinas di Kiri */
         .data-table th:nth-child(3), .data-table td:nth-child(3) { width: 15%; } 
         .data-table th:nth-child(4), .data-table td:nth-child(4) { width: 15%; } 
         .data-table th:nth-child(5), .data-table td:nth-child(5) { width: 12%; } 
@@ -362,7 +376,7 @@
         .data-table td {
             padding: 4px 6px;
             font-size: 0.75rem;
-            text-align: left;
+            text-align: center; /* Default center kecuali Nama Dinas */
             border-bottom: 1px solid #edf2f7;
             height: 30px;
         }
@@ -410,33 +424,46 @@
             font-weight: 500;
         }
 
-        /* Responsive Adjustments */
+        /* 2. MENGHAPUS MEDIA QUERIES YANG MENGUBAH LAYOUT */
+        /* Media Queries dipertahankan HANYA untuk penyesuaian font/ukuran gambar */
+        
         @media (max-width: 900px) {
-            .container { height: auto; }
+            /* Memastikan container bisa di-scroll horizontal jika terlalu lebar */
+            body { overflow-x: auto; }
+            .container { 
+                 /* Menggunakan lebar maksimum agar tampilan PC dipertahankan */
+                 max-width: 1500px; 
+                 width: 1200px; /* Nilai fixed width agar tampilan tidak berubah */
+                 height: auto; 
+            }
             .dashboard { height: auto; }
-            /* Mempertahankan rasio 50:50 di layar kecil */
-            .chart-area { min-height: 250px; max-height: none; height: 50%; }
-            .tables-area { flex-direction: column; height: 50%; }
-            .tables-area > div { margin-bottom: 10px; }
             
-            .top-bar { flex-direction: column; gap: 6px; padding: 6px 10px; }
+            /* Agar chart dan tables tidak merusak rasio, tetapi tetap dalam mode horizontal/vertikal PC */
+            .chart-area, .chart-area-full { height: 400px; min-height: 400px; }
+            .tables-area { height: 400px; } /* Tinggi fixed agar tabel tetap terlihat */
+
+            /* Perbaikan tata letak Top Bar untuk layar kecil tanpa mengubah layout utama */
+            .top-bar { 
+                flex-direction: column; 
+                gap: 6px; 
+                padding: 6px 10px; 
+                min-width: 900px; /* Minimal width agar tombol tidak tumpang tindih */
+            }
             .top-bar-center { position: static; transform: none; margin: 5px 0; }
+            .top-bar-right { margin-top: 5px; }
         }
 
         @media (max-width: 520px) {
+            /* Jika layar benar-benar kecil, tetap pertahankan lebar minimum untuk tampilan PC */
+            .container { width: 1200px; } 
+            
+            /* Penyesuaian font dan gambar tetap berlaku */
             .header-title h1 { font-size: 0.9rem; }
             .header-title h2 { font-size: 0.8rem; }
             .header-title p { font-size: 0.7rem; }
             .header-logo { height: 50px; }
             .data-table td { font-size: 0.7rem; }
             .table-title { font-size: 1rem; }
-            
-            .data-table th:nth-child(1), .data-table td:nth-child(1) { width: 10%; } 
-            .data-table th:nth-child(2), .data-table td:nth-child(2) { width: 30%; } 
-            .data-table th:nth-child(3), .data-table td:nth-child(3) { width: 15%; } 
-            .data-table th:nth-child(4), .data-table td:nth-child(4) { width: 15%; } 
-            .data-table th:nth-child(5), .data-table td:nth-child(5) { width: 15%; } 
-            .data-table th:nth-child(6), .data-table td:nth-child(6) { width: 15%; }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -905,7 +932,7 @@
                     
                     row.innerHTML = `
                         <td class="center-text">${index + 1}</td>
-                        <td>${item.namaDinas}</td>
+                        <td style="text-align: left;">${item.namaDinas}</td>
                         <td class="center-text">${item.jumlahASN.toLocaleString('id-ID')}</td>
                         <td class="center-text">${item.jumlahSertakan.toLocaleString('id-ID')}</td>
                         <td class="center-text gap-cell">${item.gap.toLocaleString('id-ID')}</td>
