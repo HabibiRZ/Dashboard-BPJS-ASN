@@ -35,7 +35,7 @@
             color: var(--color-text-dark);
             min-height: 100vh;
             padding: 10px;
-            overflow-x: hidden;
+            overflow-x: auto; /* Perubahan: auto untuk mobile */
             display: flex;
             flex-direction: column;
         }
@@ -53,6 +53,7 @@
             gap: 10px;
             height: calc(100vh - 20px);
             overflow: hidden;
+            min-width: 900px; /* Perubahan: tambahkan min-width */
         }
 
         /* Header Styles */
@@ -63,6 +64,7 @@
             background-color: var(--color-surface);
             padding: 5px 0;
             border-bottom: 1px solid #e0e0e0;
+            min-height: 80px; /* Perubahan: tambahkan min-height */
         }
 
         .header-section {
@@ -76,7 +78,7 @@
         }
 
         .header-logo {
-            height: 60px;
+            height: 80px; /* Perubahan: diperbesar dari 60px */
             margin-right: 8px;
             border-radius: 6px;
         }
@@ -128,6 +130,7 @@
             box-shadow: var(--box-shadow);
             font-size: 1em;
             position: relative;
+            min-width: 900px; /* Perubahan: tambahkan min-width */
         }
 
         .top-bar-left {
@@ -203,6 +206,7 @@
             height: calc(100vh - 200px);
             padding-bottom: 0;
             overflow: hidden;
+            min-width: 900px; /* Perubahan: tambahkan min-width */
         }
 
         .summary-area { 
@@ -395,6 +399,7 @@
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
+            min-width: 600px; /* Perubahan: tambahkan min-width */
         }
 
         .data-table thead th {
@@ -505,6 +510,7 @@
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             font-weight: 500;
+            min-width: 900px; /* Perubahan: tambahkan min-width */
         }
 
         .footer-text {
@@ -558,75 +564,89 @@
             font-weight: bold;
         }
 
+        /* Perubahan untuk mobile - mempertahankan tampilan desktop */
         @media (max-width: 900px) {
-            .dashboard {
-                grid-template-areas: "summary" "table";
-                grid-template-columns: 1fr;
-                grid-template-rows: auto 1fr;
-                height: auto;
+            body {
+                overflow-x: auto; /* Perubahan: auto untuk mobile */
+                padding: 5px;
             }
             
             .container {
+                min-width: 900px; /* Perubahan: tetap pertahankan lebar minimum */
                 padding: 8px;
                 height: auto;
             }
             
             header {
-                flex-direction: column;
+                flex-direction: row; /* Perubahan: tetap row */
                 gap: 8px;
+                min-height: 80px; /* Perubahan: tambahkan min-height */
             }
             
             .top-bar {
-                flex-direction: column;
+                flex-direction: row; /* Perubahan: tetap row */
                 gap: 6px;
                 padding: 6px 10px;
+                min-width: 900px; /* Perubahan: tambahkan min-width */
             }
             
             .top-bar-center {
-                position: static;
-                transform: none;
-                margin: 5px 0;
+                position: absolute; /* Perubahan: tetap absolute */
+                transform: translateX(-50%); /* Perubahan: tetap transform */
+                margin: 0; /* Perubahan: reset margin */
+            }
+            
+            .dashboard {
+                grid-template-areas: "summary table"; /* Perubahan: tetap layout desktop */
+                grid-template-columns: 40% 60%; /* Perubahan: tetap layout desktop */
+                grid-template-rows: 1fr; /* Perubahan: tetap layout desktop */
+                min-width: 900px; /* Perubahan: tambahkan min-width */
             }
             
             .summary-cards {
-                flex-wrap: wrap;
+                flex-wrap: nowrap; /* Perubahan: tetap nowrap */
             }
 
             .summary-cards .card {
-                flex: 1 0 45%;
-                margin-bottom: 8px;
+                flex: 1; /* Perubahan: tetap 1 */
+                margin-bottom: 0; /* Perubahan: reset margin */
             }
             
             .data-table-container {
-                max-height: 300px;
+                max-height: none; /* Perubahan: reset max-height */
             }
             
             .main-footer {
                 padding: 6px 10px;
                 font-size: 0.75rem;
-                text-align: center;
+                text-align: right; /* Perubahan: tetap right */
+                min-width: 900px; /* Perubahan: tambahkan min-width */
+            }
+            
+            .header-logo {
+                height: 80px; /* Perubahan: tetap besar di mobile */
             }
         }
 
         @media (max-width: 520px) {
             .summary-cards {
-                flex-direction: column;
+                flex-direction: row; /* Perubahan: tetap row */
             }
             
             .header-title h1 {
-                font-size: 0.9rem;
+                font-size: 1.1rem; /* Perubahan: tetap ukuran desktop */
             }
             
             .header-title h2 {
-                font-size: 0.8rem;
+                font-size: 1rem; /* Perubahan: tetap ukuran desktop */
             }
             
             .header-title p {
-                font-size: 0.7rem;
+                font-size: 0.8rem; /* Perubahan: tetap ukuran desktop */
             }
             
             .header-logo {
-                height: 50px;
+                height: 80px; /* Perubahan: tetap besar di mobile */
             }
         }
     </style>
