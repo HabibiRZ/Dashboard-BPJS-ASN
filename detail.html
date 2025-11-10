@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1500, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
     <title>DASHBOARD SERTAKAN - PEMERINTAH KOTA MEDAN</title>
     <style>
         :root {
@@ -41,6 +41,8 @@
         }
 
         .container {
+            /* Pastikan container memiliki lebar minimum yang cukup besar seperti di PC */
+            min-width: 1000px; /* Nilai ini bisa disesuaikan dengan kebutuhan PC Anda */
             max-width: 1500px;
             margin: 0 auto;
             flex-grow: 1;
@@ -194,6 +196,7 @@
 
         /* Dashboard Layout */
         .dashboard {
+            /* Ini adalah layout PC 2 kolom (50% 50%) */
             display: grid;
             grid-template-areas: "summary table";
             grid-template-columns: 50% 50%;
@@ -564,11 +567,12 @@
             font-weight: 500;
         }
         
-        /* ... media queries ... */
-
-        @media (max-width: 900px) {
-             /* ... media queries ... */
-        }
+        /* HAPUS SEMUA MEDIA QUERIES UNTUK LAYAR KECIL (max-width: 900px) */
+        /* Dengan pengaturan viewport di atas, browser akan mengabaikan ini.
+           Jika ada media query yang tertulis, mereka harus Dihapus. */
+        
+        /* @media (max-width: 900px) { ... } tidak disertakan */
+        
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -694,7 +698,7 @@
                         <tbody id="mainTableBody">
                         </tbody>
                     </table>
-                </div>    
+                </div>   
             </div>
         </div>
         
